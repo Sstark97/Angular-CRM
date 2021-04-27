@@ -1,0 +1,26 @@
+<div class="page-content p-5" id="content">
+    <h2><b>Welcome</b> Aitor</h2>
+    <h4 class="text-secondary fw-m">CRM Activity-DashBoard</h4>
+    <div class="d-flex rounded-pill justify-content-center">
+        <input [(ngModel)] = "toSearch" (keyup.enter) = "search()" class = "form-control me-1 w-25"type="text" placeholder="Search a contact by name or email">
+        <button class="btn btn-primary" (click) = "search()">Search</button>
+    </div>
+
+    <div *ngIf = "contact == undefined" class=" d-flex justify-content-center mt-5">
+        <span class="border border-warning text-danger p-3 rounded">El contacto no existe</span>
+        
+    </div>
+
+    <div *ngIf = "contact.name != '' " class="d-flex rounded bg-light bg-gradient shadow mt-5 p-3">
+       <div class="d-flex flex-column ">
+           <h2 class="ms-2">Contact</h2>
+            <p class="ms-2 fs-5">Name: {{contact.name}}</p>
+            <p class="ms-2 fs-5">Email: {{contact.email}}</p>
+            <p class="ms-2 fs-5">Contactado: 
+                <span *ngIf = "contact.contacted">Si</span>
+                <span *ngIf = "!contact.contacted">No</span>
+            </p>
+       </div>
+    </div>
+
+</div>

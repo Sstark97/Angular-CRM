@@ -1,0 +1,40 @@
+{
+  "contacts": [
+    {
+      "name": "Aitor",
+      "email": "aitorscinfo@gmail.com",
+      "contacted": false,
+      "id": 1
+    },
+    {
+      "name": "Tana",
+      "email": "tana@gmail.com",
+      "contacted": true,
+      "id": 2
+    },
+    {
+      "name": "Eli",
+      "email": "eli@gmail.com",
+      "contacted": true,
+      "id": 3
+    },
+    {
+      "name": "Noelia",
+      "email": "noelia@gmail.com",
+      "contacted": false,
+      "id": 4
+    },
+    {
+      "name": "Sergio",
+      "email": "sergio@gmail.com",
+      "contacted": false,
+      "id": 5
+    },
+    {
+      "name": "Pepe Cuadrado",
+      "email": "pepe@hotmail.com",
+      "contacted": false,
+      "id": 6
+    }
+  ]
+}

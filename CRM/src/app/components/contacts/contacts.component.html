@@ -1,0 +1,36 @@
+<div class="page-content p-5 mt-3 mt-3 bg-light bg-gradient rounded" id="content">
+    <h4 class="text-secondary fw-m">CRM Contacts-DashBoard</h4>
+
+    <div class="d-flex flex-column mt-4 w-100">
+        <div class="d-flex align-items-center">
+            <h2 class="me-3">List of Contacts</h2>
+            <button class="btn btn-primary rounded me-2" (click) = 'openAdd()'><i class="fa fa-plus-circle"></i></button>
+            <button class="btn btn-danger rounded me-2" (click) = 'removeAll()'><i class="fa fa-trash"></i></button>
+            <button class="btn btn-success me-2" (click) = "markAll()"><i class="fa fa-check-circle"></i></button>
+            <button class="btn btn-secondary me-2" (click) = "hideMarks()"><i class="fa fa-eye-slash"></i></button>
+            <button class="btn btn-secondary btn-gradient" (click) = "showAll()"><i class="fa fa-eye"></i></button>
+        </div>
+        <ul class="list-group border rounded mt-2">
+            <li *ngFor = "let contact of contacts" class="list-group-item d-flex">
+                <div class="me-5 w-25">
+                    <h4>Name: {{contact.name}}</h4>
+                </div>
+
+                <div class="me-5 w-50">
+                    <h4>Email: {{contact.email}}</h4>
+                </div>
+                
+                <div class="d-flex align-items-center me-5">
+                    <h4 class="me-2">Contacted </h4>
+                    <input class="form-check-input mt-0" type="checkbox" (click) = "mark(contact)" [checked] = "contact.contacted">
+                </div>
+                <button class="btn btn-danger mb-1 ml-1 me-2" (click) = "remove(contact.email)" ><i class="fa fa-trash"></i></button>
+                <button class="btn btn-primary mb-1 ml-1" (click) = "modifyOpen(contact)"> <i class="fa fa-pencil-alt"></i></button>
+            </li>
+        </ul>
+
+        <app-contacts-modal *ngIf = 'open' [contacts] = "contacts" [open] = "open" (addContactParent) = 'addContact($event)' (closeModal) = 'close($event)'></app-contacts-modal>
+        <app-modify-contact *ngIf = 'modify' [contacts] = "contacts" [modify] = "modify" [contact] = "contact" (closeModal) = 'close($event)' (addContactParent) = 'modifyContact($event)'></app-modify-contact>
+
+    </div>
+</div>

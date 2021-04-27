@@ -1,0 +1,34 @@
+<div class="d-flex flex-column p-2 border rounded bg-light bg-gradient">
+    <div class="d-flex align-items-center">
+        <h2 class="me-2">New Contact</h2>
+        <i class="fa fa-address-card text-secondary fa-2x"></i>
+    </div>
+
+    <div class="p-3">
+        <label class="me-2">Name </label>
+        <input [class.bg-danger] = "!correctName" [class.bg-gradient] = "!correctName" [(ngModel)] = "name" class= "form-control" type="text" (blur) = 'comprobeName()'>
+    </div>
+
+    <div class="p-3">
+        <label class="me-2">Email </label>
+        <input [class.bg-danger] = "!correct" [class.bg-gradient] = "!correct" [(ngModel)] = "email" class= "form-control" type="text" (blur) = "comprobeMail()">
+        <div *ngIf = "!correct || !correctName" class="d-flex justify-content-center">
+            <p  class="text-danger border border-danger p-3 mt-3 text-start">
+                Uno o más campos están incorrectos<br>
+                El nombre debe ser mínimo de 6 carácteres<br>
+                El correo debe acabar en @gmail.com/@hotmail.com/@outlook.com
+            </p>
+        </div>
+        <div *ngIf = "exist" class="d-flex justify-content-center">
+            <p  class="text-danger border border-warning p-3 mt-3 text-start">
+                El correo {{email}} ya existe
+            </p>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary me-2" (click) = 'close()'>Close</button>
+        <button type="button" class="btn btn-primary" (click) = "addContact()">Save changes</button>
+    </div>
+
+</div>
