@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Contact } from '../model/type';
+import { Contact, User } from '../model/type';
+import { CookieService } from 'ngx-cookie-service';
 import axios from 'axios';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
-  constructor() { }
+  constructor(private cookies: CookieService) { }
 
   getAllContacts(): Promise<Contact[]>{
-    return axios.get<Contact[]>('http://localhost:3000/contacts')
+    return axios.get<Contact[]>(`http://localhost:3000/${this.getUserName()}/contacts`,{ headers: { Authorization: `Bearer ${this.getToken()}`, userName:this.getUserName()}})
                 .then(req => req.data);
   }
 
@@ -37,7 +39,7 @@ export class ContactsService {
                 .then(req => req.data);
   }
 
-  getContact(search:string): Promise<any>{
+  getContact(search:string,userName:string): Promise<any> | null{
     let toSearch:string = '';
     if(search.indexOf(' ') != -1){
       search = this.capitalize(search);
@@ -50,12 +52,20 @@ export class ContactsService {
     if(search.includes('@')){
       toSearch = 'email';
     } else {
-      toSearch = 'name';
+      toSearch = 'contactName';
     }
 
-    return axios.get(`http://localhost:3000/contacts?${toSearch}=${search}`)
+    return axios.get(`http://localhost:3000/${this.getUserName()}/contacts/${search}`,{ headers: { Authorization: `Bearer ${this.getToken()}`  } })
                 .then(req => req.data)
                 .catch(err => console.log(err));
+  }
+
+  getUserName() : string {
+    return this.cookies.get('userName');
+  }
+
+  getToken() : string {
+    return this.cookies.get('token');
   }
 
   capitalize(name:string) : string{

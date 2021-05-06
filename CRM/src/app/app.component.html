@@ -1,2 +1,6 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<app-login (loginParent) = 'signin()' [hidden] = 'hidden'></app-login>
+
+<div *ngIf = "login">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+</div>

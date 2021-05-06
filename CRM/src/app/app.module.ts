@@ -11,6 +11,8 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactsModalComponent } from './components/contacts-modal/contacts-modal.component';
 import { MarksComponent } from './components/marks/marks.component';
 import { ModifyContactComponent } from './components/modify-contact/modify-contact.component';
+import { LoginComponent } from './components/login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,15 @@ import { ModifyContactComponent } from './components/modify-contact/modify-conta
     ContactsComponent,
     ContactsModalComponent,
     MarksComponent,
-    ModifyContactComponent
+    ModifyContactComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

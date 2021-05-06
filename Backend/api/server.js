@@ -47,10 +47,12 @@ app.post('/login', (req, res) => {
            }
           // Valida que la contraseña escrita por el usuario, sea la almacenada en la db
          if (! bcrypt.compareSync(req.body.password, usuarioDB.password)){
-            return res.status(400).json({message: "User/password are incorrect"});
+           console.log('AKi');
+            return res.status(400).send("User/password are incorrect");
          }
   
           // Genera el token de autenticación
+          console.log('Todo bien');
           let token = jwt.sign({ usuario: usuarioDB }, "CRMTOPSECRET")
           res.json({
             usuario: usuarioDB,

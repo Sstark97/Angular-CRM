@@ -4,3 +4,11 @@ export interface Contact{
     contacted: boolean
     id?:number
 }
+
+export interface User {
+    userName: string,
+    name?: string,
+    email: string,
+    contactsId?: string[],
+    token?: string
+}

@@ -17,7 +17,8 @@ export class ContactsComponent implements OnInit {
   constructor(private contactsService: ContactsService) {
     this.contactsService.getAllContacts()
         .then(req => this.contacts = req)
-        .then(d => this.contactsAll = this.contacts);  
+        .then(d => this.contactsAll = this.contacts)
+        .then(c => console.log(this.contacts));  
   }
 
   ngOnInit(): void {

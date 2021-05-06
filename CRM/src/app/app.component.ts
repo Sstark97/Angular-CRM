@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'crm';
+  login:boolean = false;
+  hidden:boolean = false;
+
+  signin() {
+    this.login = true;
+    this.hidden = true;
+  }
 }

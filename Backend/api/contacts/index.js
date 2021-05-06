@@ -5,6 +5,12 @@ const contactController = require('./contacs.controller');
 //POST de un contacto
 router.post('/contacts',contactController.createContact);
 
+//GET de un contacto
+router.get('/contacts/:contactName',contactController.getContact);
+
+//GET todos los contactos de un usuario
+router.get('/contacts',contactController.getAllContacts);
+
 //DELETE de un contacto
 router.delete('/contacts/:id',contactController.deleteContact);
 
