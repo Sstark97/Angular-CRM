@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Añadiendo Login
   login(){
     this.userService.loginUser(this.userName,this.password)
         .then(token => this.userService.setCookies(token,this.userName))
